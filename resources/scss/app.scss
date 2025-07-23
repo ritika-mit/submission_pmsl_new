@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+$bootstrap-icons-font-dir: 'bootstrap-icons/font/fonts';
+
+@import 'bootstrap-icons/font/bootstrap-icons.scss';
+
+table {
+    @apply w-full;
+
+    thead {
+        th {
+            @apply bg-primary-600 text-white whitespace-nowrap;
+        }
+    }
+
+    th,
+    td {
+        @apply p-3.5 border-b border-b-primary-600 border-opacity-5;
+    }
+
+    tbody {
+        tr:nth-of-type(odd) {
+
+            th,
+            td {
+                @apply bg-white;
+            }
+        }
+
+        tr:nth-of-type(even) {
+
+            th,
+            td {
+                @apply bg-gray-200 bg-opacity-20;
+            }
+        }
+    }
+}

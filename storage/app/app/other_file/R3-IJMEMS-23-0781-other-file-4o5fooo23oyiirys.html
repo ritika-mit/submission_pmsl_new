@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Two Columns Table with Header and 3 Rows</title>
+<style>
+  .table {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 600px; /* Adjust as needed */
+  }
+  .row {
+    display: flex;
+    flex-direction: row;
+  }
+  .header {
+    background-color: #f0f0f0;
+    font-weight: bold;
+  }
+  .cell {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<div class="table">
+  <div class="row header">
+    <div class="cell">Header 1</div>
+    <div class="cell">Header 2</div>
+  </div>
+  <div class="row">
+    <div class="cell">Row 1, Column 1</div>
+    <div class="cell">Row 1, Column 2</div>
+  </div>
+  <div class="row">
+    <div class="cell">Row 2, Column 1</div>
+    <div class="cell">Row 2, Column 2</div>
+  </div>
+  <div class="row">
+    <div class="cell">Row 3, Column 1</div>
+    <div class="cell">Row 3, Column 2</div>
+  </div>
+</div>
+
+</body>
+</html>
