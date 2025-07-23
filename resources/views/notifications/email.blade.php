@@ -36,7 +36,7 @@ default => 'primary',
 @lang('Thank you for your cooperation and with regards.')<br>
 @lang('Editor')<br>
 {{ config('app.full_name') }}<br>
-<a href="https://www.ijmems.in" target="_blank">https://www.ijmems.in</a>
+<a href="https://journals.ramartipublishers.com/PMSL/" target="_blank">https://journals.ramartipublishers.com/PMSL/</a>
 </address>
 @endif
 

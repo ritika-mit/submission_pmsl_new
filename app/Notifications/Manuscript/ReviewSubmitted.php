@@ -36,16 +36,16 @@ class ReviewSubmitted extends Notification implements ShouldQueue
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-            ->cc('noreply@ijmems.in')
+            ->cc('noreply@ramartipublishers.com')
             ->template('notifications.email')
-            ->subject("Thanks for reviewing the manuscript for International Journal of Mathematical, Engineering and Management Sciences")
+            ->subject("Thanks for reviewing the manuscript for Prabha Materials Science Letters")
             ->greeting(implode(' ', array_filter([$notifiable->title, $notifiable->name])))
-            ->line('Thank you for reviewing the manuscript for the International Journal of Mathematical, Engineering and Management Sciences. We greatly appreciate the voluntary contribution that you give to the Journal and hope that we may continue to seek your assistance with the refereeing process for the International Journal of Mathematical, Engineering and Management Sciences (IJMEMS).')
+            ->line('Thank you for reviewing the manuscript for the Prabha Materials Science Letters. We greatly appreciate the voluntary contribution that you give to the Journal and hope that we may continue to seek your assistance with the refereeing process for the Prabha Materials Science Letters (PMSL).')
             ->line("***Manuscript ID***: {$this->manuscript->code}")
             ->line("***Manuscript Title***: {$this->manuscript->revision->title}")
             ->line("***Abstract***: {$this->manuscript->revision->abstract}")
             ->line("***Keywords***: {$this->manuscript->revision->keywords}")
-            ->line('Kindly consider IJMEMS for your future publications.');
+            ->line('Kindly consider PMSL for your future publications.');
     }
 
     /**

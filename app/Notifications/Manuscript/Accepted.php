@@ -40,18 +40,18 @@ class Accepted extends Notification implements ShouldQueue
 
         return (new MailMessage)
             ->cc($co_authors->pluck('email', 'name'))
-            ->cc('noreply@ijmems.in')
+            ->cc('noreply@ramartipublishers.com')
             ->template('notifications.email')
-            ->subject('Your manuscript is accepted - International Journal of Mathematical, Engineering and Management Sciences')
+            ->subject('Your manuscript is accepted - Prabha Materials Science Letters')
             ->greeting(implode(' ', array_filter([$notifiable->title, $notifiable->name, ', WITH CC TO ALL AUTHORS'])))
-            ->line("We are pleased to inform you that your article entitled {$this->manuscript->revision->title} has been ***accepted*** for the publication in the International Journal of Mathematical, Engineering and Management Sciences")
+            ->line("We are pleased to inform you that your article entitled {$this->manuscript->revision->title} has been ***accepted*** for the publication in the Prabha Materials Science Letters")
             ->line('Very soon, you will receive the proof of your article.')
             ->line("***Manuscript ID***: {$this->manuscript->code}")
             ->line("***Manuscript Title***: {$this->manuscript->revision->title}")
             ->line("***Abstract***: {$this->manuscript->revision->abstract}")
             ->line("***Keywords***: {$this->manuscript->revision->keywords}")
-            ->line('Kindly consider the International Journal of Mathematical, Engineering and Management Sciences for your future manuscripts.')
-            ->line('Kindly cite International Journal of Mathematical, Engineering and Management Sciences published papers in your future research.');
+            ->line('Kindly consider the Prabha Materials Science Letters for your future manuscripts.')
+            ->line('Kindly cite Prabha Materials Science Letters published papers in your future research.');
     }
 
     /**

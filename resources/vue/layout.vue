@@ -26,7 +26,7 @@ const asideOpened = ref(false);
             <Alert />
             <slot />
             <p class="text-xs text-gray-400 px-2 text-center pt-3">
-                Copyright &copy; {{ new Date().getFullYear() }} www.ijmems.in,
+                Copyright &copy; Ram Arti Publishers,
                 All rights reserved.
             </p>
 

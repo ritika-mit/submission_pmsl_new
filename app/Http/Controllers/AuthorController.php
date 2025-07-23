@@ -31,7 +31,7 @@ class AuthorController extends Controller
             'name' => [
                 'label' => __('Name'),
                 'orderable' => false,
-                'searchable' => false
+                'searchable' => true
             ],
             'email' => [
                 'label' => __('Email'),

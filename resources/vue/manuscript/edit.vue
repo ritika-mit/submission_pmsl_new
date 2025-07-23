@@ -169,7 +169,7 @@ function transformFormData(data: any) {
             <div>
                 <div class="flex items-center space-x-2">
                     <label class="block mb-1 font-semibold" for="copyright_form">Copyright Form</label>
-                    <p class="text-sm text-gray-500">.jpg, .jpeg, .png, .gif, .pdf format only, which can be found at the link <a href="https://www.ijmems.in/assets/copyright-ijmems.pdf" target="_blank" class="text-primary-400">Click Here</a></p>
+                    <p class="text-sm text-gray-500">.jpg, .jpeg, .png, .gif, .pdf format only, which can be found at the link <a href="https://journals.ramartipublishers.com/PMSL/assets/Copyright_PMSL.pdf" target="_blank" class="text-primary-400">Click Here</a></p>
                 </div>
                 <template v-if="typeof form.copyright_form === 'string'">
                     <div class="flex">

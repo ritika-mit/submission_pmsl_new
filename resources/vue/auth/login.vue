@@ -4,10 +4,9 @@ import Layout from '@/vue/auth/layout.vue';
 import Alert from '@/vue/components/alert.vue';
 import Processing from '@/vue/components/processing.vue';
 import { Link, useForm, usePage } from '@inertiajs/vue3';
-import { ref } from 'vue';
 
 const { url } = usePage()
-const showPasswordStatus = ref(false);
+
 const form = useForm({
     username: null,
     password: null,
@@ -19,12 +18,6 @@ const recaptcha_ref = useReCaptcha((token) => {
     form['g-recaptcha-response'] = token;
     form.post(url)
 })
-function showPassword(){
-    showPasswordStatus.value = true;
-}
-function hidePassword(){
-    showPasswordStatus.value = false;
-}
 </script>
 
 <template>
@@ -51,10 +44,7 @@ function hidePassword(){
                     <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
                         <i class="bi bi-key"></i>
                     </div>
-                    <input :type="showPasswordStatus ? 'text' : 'password'" v-model="form.password" id="password" placeholder="Enter your password" class="pl-10" />
-                    
-                    <span v-if="!showPasswordStatus" class="icon-ice" @click="showPassword()"><i class="bi bi-eye-slash"></i></span>
-                    <span v-if="showPasswordStatus" class="icon-ice" @click="hidePassword()"><i class="bi bi-eye"></i></span>
+                    <input type="password" v-model="form.password" id="password" placeholder="Enter your password" class="pl-10" />
                 </div>
                 <div v-if="form.errors?.password" class="text-sm text-red-700">{{ form.errors.password }}</div>
                 <Link href="/auth/password" class="text-primary-400 text-sm">Forgot password?</Link>
@@ -74,14 +64,11 @@ function hidePassword(){
         <p class="mb-3">Not registered?
             <Link href="/auth/register" class="text-primary-400">Create an account</Link>
         </p>
-        <p class="text-xs text-gray-400">Copyright &copy; {{ new Date().getFullYear() }} www.ijmems.in, All rights reserved.</p>
+        <p class="text-xs text-gray-400">
+            Copyright &copy; Ram Arti Publishers,
+            All rights reserved.
+        </p>
     </Layout>
 </template>
 
-<style scoped lang="scss">
-.icon-ice {
-    position: absolute;
-    right: 10px;
-    margin-top: 10px;
-}
-</style>
+<style scoped lang="scss"></style>

@@ -18,7 +18,7 @@ defineProps<Props>();
                 <h1
                     class="text-6xl md:text-8xl md:tracking-widest uppercase font-bold mb-3"
                 >
-                    ijmems
+                    pmsl
                 </h1>
                 <h2
                     class="text-2xl tracking-[9px] md:text-4xl md:tracking-[18px] uppercase font-thin"

@@ -39,11 +39,6 @@ const form = useForm({
     subscribe_to_notifications: author.subscribed_for_notifications,
     accept_review_request: author.accept_review_request,
 });
-
-const isDisabled = (id: string) => {
-    
-    return form.research_areas.length >= 3 && !form.research_areas.includes(id);
-};
 </script>
 
 <template>
@@ -152,24 +147,21 @@ const isDisabled = (id: string) => {
                 <div v-if="form.errors?.country" class="text-sm text-red-700">{{ form.errors.country }}</div>
             </div>
             <div class="md:col-span-2">
-                <div class="flex items-center space-x-2">
-                    <label class="block mb-1 font-semibold">Areas of Interest or Expertise</label>
-                    <p class="text-sm text-gray-500">(Kindly select 3 broad research areas of article)</p>
-                </div>
+                <label class="block mb-1 font-semibold">Areas of Interest or Expertise</label>
                 <div class="max-h-72 overflow-y-auto">
                     <div class="flex items-center p-2" v-for="item in  research_areas " :key="`research-area-${item.id}`">
-                        <input v-model="form.research_areas" type="checkbox" :id="`research-area-${item.id}`" :value="item.id" :disabled="isDisabled(item.id)"/>
+                        <input v-model="form.research_areas" type="checkbox" :id="`research-area-${item.id}`" :value="item.id" />
                         <label :for="`research-area-${item.id}`" class="ml-2 text-sm">{{ item.research_area }}</label>
                     </div>
                 </div>
-                
+                <p class="text-sm text-gray-500">Kindly select at least 3 to 5 broad research areas of article</p>
                 <div v-if="form.errors?.research_areas" class="text-sm text-red-700">{{ form.errors.research_areas }}</div>
             </div>
             <div class="md:col-span-2">
                 <div class="mb-4">
                     <div class="flex items-center">
                         <input v-model="form.privacy_policy" type="checkbox" id="privacy-policy" disabled />
-                        <label for="privacy-policy" class="ml-2 text-sm">Yes, I agree to have my data collected and stored according to the <a href="https://www.ijmems.in/privacypolicy.php" target="_blank" class="text-primary-400">privacy statement</a>.</label>
+                        <label for="privacy-policy" class="ml-2 text-sm">Yes, I agree to have my data collected and stored according to the <a href="https://journals.ramartipublishers.com/PMSL/privacypolicy.php" target="_blank" class="text-primary-400">privacy statement</a>.</label>
                     </div>
                     <div v-if="form.errors?.privacy_policy" class="text-sm text-red-700">{{ form.errors.privacy_policy }}</div>
                 </div>

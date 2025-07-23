@@ -44,7 +44,9 @@ const recaptcha_ref = useReCaptcha((token) => {
         <p class="mb-3">Back to
             <Link href="/auth" class="text-primary-400">Login</Link>
         </p>
-        <p class="text-xs text-gray-400">Copyright &copy; {{ new Date().getFullYear() }} www.ijmems.in, All rights reserved.</p>
+        <p class="text-xs text-gray-400">
+            Copyright &copy; Ram Arti Publishers,
+            All rights reserved.</p>
     </Layout>
 </template>
 

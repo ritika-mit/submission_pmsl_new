@@ -793,6 +793,25 @@ class ManuscriptController extends Controller
             ->get();
     }
 
+    public function getSimilarResearchAreaReviewers(Request $request)
+    {
+        $search = $request->input('search');
+
+        $reviewers = Reviewer::query()
+            ->when($search, function ($query, $search) {
+                $query->where('email', 'like', "%$search%")
+                    ->orWhere('first_name', 'like', "$search%")  // Search by first name (starts with input)
+                    ->orWhere('last_name', 'like', "$search%");   // Search by last name (starts with input)
+            })
+            ->get();
+
+        return Inertia::render('ManuscriptPage', [
+            'similar_research_area_reviewers' => $reviewers,
+        ]);
+    }
+
+
+
     public function reviewers(Request $request, Manuscript $manuscript)
     {
         $manuscript->revision->load('reviewers.reviewer.country');
@@ -1177,12 +1196,17 @@ class ManuscriptController extends Controller
         return back()
             ->with(
                 'success',
-                __('Associate editor assigned manuscript successfully.')
+                __('Associate editor assigned.')
             );
     }
 
     protected function invite(Request $request, Manuscript $manuscript)
     {
+        $reviewers = Inertia::lazy(fn() => $this->searchAuthorOrGuestAuthor(
+            search: $request->input('search'),
+        )
+        );
+
         $manuscript->loadMissing([
             'revision',
             'researchAreas',
@@ -1224,11 +1248,6 @@ class ManuscriptController extends Controller
         });
 
         $countries = fn() => Country::query()->active()->get();
-
-        $reviewers = Inertia::lazy(fn() => $this->searchAuthorOrGuestAuthor(
-            search: $request->input('search'),
-        )
-        );
 
         $similar_research_area_reviewers = Inertia::lazy(
             fn() => $this->similarResearchAreaReviewers($manuscript)

@@ -84,8 +84,8 @@ class UpdateRequest extends FormRequest
 
             Action::REVIEWERS => [
                 'reviewers' => ['required', 'array', "min:{$revision->minimum_reviews}", function (string $attribute, mixed $reviewers, \Closure $fail) {
-                    if (count(array_filter(array_count_values(array_map(fn ($item) => $item['country_id'] ?: 0, $reviewers)), fn ($count) => $count > 3))) {
-                        $fail(__("Only three (3) {$attribute} can be added from same country."));
+                    if (count(array_filter(array_count_values(array_map(fn ($item) => $item['country_id'] ?: 0, $reviewers)), fn ($count) => $count > 2))) {
+                        $fail(__("Only two (2) {$attribute} can be added from same country."));
                     }
                 }],
                 'reviewers.*.email' => ['required', 'email', 'distinct', 'max:255'],
@@ -93,8 +93,8 @@ class UpdateRequest extends FormRequest
 
             Action::SUBMIT => [
                 'reviewers' => ['required', 'array', "min:{$revision->minimum_reviews}", function (string $attribute, mixed $reviewers, \Closure $fail) {
-                    if (count(array_filter(array_count_values(array_map(fn ($item) => $item['country_id'] ?: 0, $reviewers)), fn ($count) => $count > 3))) {
-                        $fail(__("Only three (3) {$attribute} can be added from same country."));
+                    if (count(array_filter(array_count_values(array_map(fn ($item) => $item['country_id'] ?: 0, $reviewers)), fn ($count) => $count > 2))) {
+                        $fail(__("Only two (2) {$attribute} can be added from same country."));
                     }
                 }],
                 'reviewers.*.email' => ['required', 'email', 'distinct', 'max:255'],

@@ -36,13 +36,13 @@ class AssociateEditorAssigned extends Notification implements ShouldQueue
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-            ->cc('noreply@ijmems.in')
+            ->cc('noreply@ramartipublishers.com')
             ->template('notifications.email')
-            ->subject("International Journal of Mathematical, Engineering and Management Sciences has assigned a manuscript to you as Associate Editor")
+            ->subject("Prabha Materials Science Letters has assigned a manuscript to you as Associate Editor")
             ->greeting(implode(' ', array_filter([$notifiable->title, $notifiable->name])))
             ->line("The manuscript (***{$this->manuscript->code}***), entitled ***{$this->manuscript->revision->title}*** corresponding author {$this->manuscript->author->name} has been assigned to you and is in your Associate Editor Account, awaiting reviewer selection.")
             ->line("Please select reviewers by ONE WEEK TIME.")
-            ->line("You can access your Associate Editor Account at IJMEMS submission system:")
+            ->line("You can access your Associate Editor Account at PMSL submission system:")
             ->action("Click here to login", route('auth.index'))
             ->line("Please note that you will need to provide your username and password when using this link to access the manuscript.")
             ->line("Your username is {$notifiable->email}")

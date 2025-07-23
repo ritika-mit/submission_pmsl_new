@@ -172,7 +172,7 @@ const isDisabled = (id: string) => {
                 <div class="mb-4">
                     <div class="flex items-center">
                         <input v-model="form.privacy_policy" type="checkbox" id="privacy-policy" disabled />
-                        <label for="privacy-policy" class="ml-2 text-sm">Yes, I agree to have my data collected and stored according to the <a href="https://www.ijmems.in/privacypolicy.php" target="_blank" class="text-primary-400">privacy statement</a>.</label>
+                        <label for="privacy-policy" class="ml-2 text-sm">Yes, I agree to have my data collected and stored according to the <a href="https://journals.ramartipublishers.com/PMSL/privacypolicy.php" target="_blank" class="text-primary-400">privacy statement</a>.</label>
                     </div>
                     <div v-if="form.errors?.privacy_policy" class="text-sm text-red-700">{{ form.errors.privacy_policy }}</div>
                 </div>

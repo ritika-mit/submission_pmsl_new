@@ -40,9 +40,9 @@ class Revised extends Notification implements ShouldQueue
 
         return (new MailMessage)
             ->cc($co_authors->pluck('email', 'name'))
-            ->cc('noreply@ijmems.in')
+            ->cc('noreply@ramartipublishers.com')
             ->template('notifications.email')
-            ->subject('Manuscript revision has been submitted to International Journal of Mathematical, Engineering and Management Sciences')
+            ->subject('Manuscript revision has been submitted to Prabha Materials Science Letters')
             ->greeting(implode(' ', array_filter([$notifiable->title, $notifiable->name])))
             ->line("Your revised manuscript entitled ***{$this->manuscript->revision->title}*** co-authored {$co_authors->pluck('name')->join(', ')} is received.")
             ->line('Please refer to the manuscript identification number of your manuscript in any correspondence with us.')
@@ -52,7 +52,7 @@ class Revised extends Notification implements ShouldQueue
             ->line("***Manuscript Title***: {$this->manuscript->revision->title}")
             ->line("***Abstract***: {$this->manuscript->revision->abstract}")
             ->line("***Keywords***: {$this->manuscript->revision->keywords}")
-            ->line('Kindly consider IJMEMS for your future publications.');
+            ->line('Kindly consider PMSL for your future publications.');
     }
 
     /**

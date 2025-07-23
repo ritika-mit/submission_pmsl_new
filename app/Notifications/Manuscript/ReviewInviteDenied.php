@@ -36,17 +36,17 @@ class ReviewInviteDenied extends Notification implements ShouldQueue
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-            ->cc('noreply@ijmems.in')
+            ->cc('noreply@ramartipublishers.com')
             ->template('notifications.email')
             ->subject("Thank you for replying to our invitation to review")
             ->greeting(implode(' ', array_filter([$notifiable->title, $notifiable->name])))
-            ->line("Thank you for replying to our invitation to review **{$this->manuscript->code}** entitled **{$this->manuscript->revision->title}** for International Journal of Mathematical, Engineering and Management Sciences.")
+            ->line("Thank you for replying to our invitation to review **{$this->manuscript->code}** entitled **{$this->manuscript->revision->title}** for Prabha Materials Science Letters.")
             ->line('It is unfortunate that you are unable to review this manuscript at this time. We shall keep you in mind when future manuscripts come in that fall under your area of expertise.')
             ->line("***Manuscript ID***: {$this->manuscript->code}")
             ->line("***Manuscript Title***: {$this->manuscript->revision->title}")
             ->line("***Abstract***: {$this->manuscript->revision->abstract}")
             ->line("***Keywords***: {$this->manuscript->revision->keywords}")
-            ->line('Kindly consider IJMEMS for your future publications.');
+            ->line('Kindly consider PMSL for your future publications.');
     }
 
     /**

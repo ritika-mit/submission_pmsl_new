@@ -40,18 +40,18 @@ class Published extends Notification implements ShouldQueue
 
         return (new MailMessage)
             ->cc($co_authors->pluck('email', 'name'))
-            ->cc('noreply@ijmems.in')
+            ->cc('noreply@ramartipublishers.com')
             ->template('notifications.email')
-            ->subject('Your manuscript is published - International Journal of Mathematical, Engineering and Management Sciences')
+            ->subject('Your manuscript is published - Prabha Materials Science Letters')
             ->greeting(implode(' ', array_filter([$notifiable->title, $notifiable->name, ', WITH CC TO ALL AUTHORS'])))
-            ->line("It is with great pleasure to inform you that your article has been published in the International Journal of Mathematical, Engineering and Management Sciences.")
-            ->line('Many thanks for your contribution to IJMEMS.')
+            ->line("It is with great pleasure to inform you that your article has been published in the Prabha Materials Science Letters.")
+            ->line('Many thanks for your contribution to PMSL.')
             ->line("***Manuscript ID***: {$this->manuscript->code}")
             ->line("***Manuscript Title***: {$this->manuscript->revision->title}")
             ->line("***Abstract***: {$this->manuscript->revision->abstract}")
             ->line("***Keywords***: {$this->manuscript->revision->keywords}")
-            ->line('Kindly consider the International Journal of Mathematical, Engineering and Management Sciences for your future manuscripts.')
-            ->line('Kindly cite International Journal of Mathematical, Engineering and Management Sciences published papers in your future research.');
+            ->line('Kindly consider the Prabha Materials Science Letters for your future manuscripts.')
+            ->line('Kindly cite Prabha Materials Science Letters published papers in your future research.');
     }
 
     /**

@@ -16,9 +16,10 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'IJMEMS'),
+    'name' => env('APP_NAME', 'PMSL'),
 
-    'full_name' => env('APP_FULL_NAME', 'International Journal of Mathematical, Engineering and Management Sciences'),
+    'full_name' => env('APP_FULL_NAME', 'Prabha Materials Science Letters'),
+
 
     /*
     |--------------------------------------------------------------------------

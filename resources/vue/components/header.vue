@@ -62,7 +62,7 @@ const switchRole = (item: HeaderItem) => router.post(`/auth/switch/${item.value}
             <div class="px-4">
                 <ul class="flex flex-row">
                     <li class="group">
-                        <a class="block hover:text-white text-white tracking-widest font-bold" target="_blank" href="https://ijmems.in/">IJMEMS</a>
+                        <a class="block hover:text-white text-white tracking-widest font-bold" target="_blank" href="https://journals.ramartipublishers.com/PMSL/">PMSL</a>
                     </li>
                 </ul>
             </div>

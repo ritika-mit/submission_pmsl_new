@@ -82,7 +82,7 @@ class Manuscript extends Model
     public function generateCodeAttribute()
     {
         $count = self::query()->whereYear('created_at', date('Y'))->count() + 1;
-        $this->attributes['code'] = implode('-', ['IJMEMS', date('y'), sprintf('%04d', $count)]);
+        $this->attributes['code'] = implode('-', ['PMSL', date('y'), sprintf('%04d', $count)]);
     }
 
     public function saveFileAndSetAttribute(UploadedFile $file, string $attribute)

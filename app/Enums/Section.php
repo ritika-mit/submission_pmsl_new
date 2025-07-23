@@ -206,7 +206,7 @@ enum Section: string implements Arrayable
 
             self::EDITOR_IN_CHIEF => [
                 self::item(
-                    label: __('New Submission'),
+                    label: __('New Submission(s)'),
                     route: ['manuscripts.index', ['filter' => Filter::SUBMITTED]],
                     permission: Permission::MANUSCRIPT_LIST_SUBMITTED,
                 ),

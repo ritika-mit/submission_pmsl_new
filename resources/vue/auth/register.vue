@@ -75,7 +75,7 @@ const isDisabled = (id: string) => {
             <form @submit.prevent="form.post(url.current)" class="grid grid-cols-1 md:grid-cols-2 gap-2 p-4 md:gap-4 md:p-8 md:pb-4" novalidate>
                 <div class="md:col-span-2">
                     <h2 class="font-serif text-3xl">Register!</h2>
-                    <p class="text-sm">Kindly, read the <a href="https://www.ijmems.in/forauthors.php" target="_blank" class="text-primary-400">"For Authors"</a> link before submitting the manuscript.</p>
+                    <p class="text-sm">Kindly, read the <a href="https://journals.ramartipublishers.com/PMSL/forauthors.php" target="_blank" class="text-primary-400">"For Authors"</a> link before submitting the manuscript.</p>
                 </div>
                 <div>
                     <label for="title" class="block mb-1 font-semibold">Title</label>
@@ -200,7 +200,7 @@ const isDisabled = (id: string) => {
                     <div class="mb-4">
                         <div class="flex items-center">
                             <input v-model="form.privacy_policy" type="checkbox" id="privacy-policy" />
-                            <label for="privacy-policy" class="ml-2 text-sm">Yes, I agree to have my data collected and stored according to the <a href="https://www.ijmems.in/privacypolicy.php" target="_blank" class="text-primary-400">privacy statement</a>.</label>
+                            <label for="privacy-policy" class="ml-2 text-sm">Yes, I agree to have my data collected and stored according to the <a href="https://journals.ramartipublishers.com/PMSL/privacypolicy.php" target="_blank" class="text-primary-400">privacy statement</a>.</label>
                         </div>
                         <div v-if="form.errors?.privacy_policy" class="text-sm text-red-700">{{ form.errors.privacy_policy }}</div>
                     </div>
@@ -229,7 +229,10 @@ const isDisabled = (id: string) => {
             <p class="mb-3 text-center">Already registered?
                 <Link href="/auth" class="text-primary-400">Login</Link>
             </p>
-            <p class="text-xs text-gray-400 mb-3 text-center">Copyright &copy; {{ new Date().getFullYear() }} www.ijmems.in, All rights reserved.</p>
+            <p class="text-xs text-gray-400 mb-3 text-center">
+                Copyright &copy; Ram Arti Publishers,
+                All rights reserved.
+            </p>
         </div>
     </Layout>
 </template>

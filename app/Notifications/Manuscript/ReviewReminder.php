@@ -38,9 +38,9 @@ class ReviewReminder extends Notification implements ShouldQueue
         $home = route('index');
 
         return (new MailMessage)
-            ->cc('noreply@ijmems.in')
+            ->cc('noreply@ramartipublishers.com')
             ->template('notifications.email')
-            ->subject('Friendly Reminder: International Journal of Mathematical, Engineering and Management Sciences Manuscript Reviewer Invitation')
+            ->subject('Friendly Reminder: Prabha Materials Science Letters Manuscript Reviewer Invitation')
             ->greeting(implode(' ', array_filter([$notifiable->title, $notifiable->name])))
             ->line('We hope you are fine and doing well.')
             ->line('Further, kindly complete the review of the manuscript.')

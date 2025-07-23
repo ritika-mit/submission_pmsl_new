@@ -101,7 +101,7 @@ function clearSearch() {
                 <p v-else-if="filter.search && filter.search.length > 0" class="text-sm text-gray-500 mt-2">Reviewer not found. <a href="#" class="text-primary-400" @click.prevent="editReviewer({ email: filter.search })">Click here to add manually.</a></p>
             </div>
             <div class="mb-4">
-                <p class="text-gray-500 text-sm">Suggesting 8 reviewers is required for submission, who are truthfully related to your research area and interested to review the articles. It is not necessary that your manuscript will be sent to these reviewers. E-mail ids of reviewers must be original. If later on, the email id of any reviewer has found fake/wrong, your paper must be withdrawn from the journal. Reviewers should be from reputed organizations. The reviewer should not be from IJMEMS editorial board and the author's organization. Three reviewers may be from same country.</p>
+                <p class="text-gray-500 text-sm">Suggesting 8 reviewers is required for submission, who are truthfully related to your research area and interested to review the articles. It is not necessary that your manuscript will be sent to these reviewers. E-mail ids of reviewers must be original. If later on, the email id of any reviewer has found fake/wrong, your paper must be withdrawn from the journal. Reviewers should be from reputed organizations. The reviewer should not be from PMSL editorial board and the author's organization. Three reviewers may be from same country.</p>
             </div>
             <form @submit.prevent="form.post(url.current)" id="edit-form" novalidate>
                 <div class="overflow-y-auto rounded">
