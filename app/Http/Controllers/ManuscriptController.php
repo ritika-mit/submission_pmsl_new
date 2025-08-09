@@ -351,6 +351,8 @@ class ManuscriptController extends Controller
             $actions[] = Action::ACCEPT;
             $actions[] = Action::WITHDRAW;
             $actions[] = Action::REJECT;
+            $actions[] = Action::DELETE;
+
         }
 
         if ($filter === Filter::WITH_EIC && $user->section === Section::EDITOR_IN_CHIEF) {

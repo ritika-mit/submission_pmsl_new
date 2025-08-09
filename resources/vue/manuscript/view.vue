@@ -152,20 +152,35 @@ function checkactions(e:any){
                     <li v-for="item in manuscript.research_areas" :key="`research-area-${item.id}`">{{ item.research_area }}</li>
                 </ul>
             </div>
-            <div class="mt-4" v-if="manuscript.revision?.anonymous_file">
+            <div class="mt-4">
                 <label class="block mb-1 font-semibold">Anonymous File</label>
-                <i class="bi bi-filetype-pdf text-xl mr-2"></i>
-                <a :href="manuscript.revision?.anonymous_file" target="_blank" class="text-primary-400">{{ basename(manuscript.revision?.anonymous_file) }}</a>
+                <template v-if="manuscript.revision?.anonymous_file">
+                    <i class="bi bi-filetype-pdf text-xl mr-2"></i>
+                    <a :href="manuscript.revision.anonymous_file" target="_blank" class="text-primary-400">{{ basename(manuscript.revision.anonymous_file) }}</a>
+                </template>
+                <template v-else>
+                    <span class="text-gray-400">Removed</span>
+                </template>
             </div>
-            <div class="mt-4" v-if="manuscript.revision?.source_file">
+            <div class="mt-4">
                 <label class="block mb-1 font-semibold">Source File</label>
-                <i class="bi bi-filetype-docx text-xl mr-2"></i>
-                <a :href="manuscript.revision?.source_file" target="_blank" class="text-primary-400">{{ basename(manuscript.revision?.source_file) }}</a>
+                <template v-if="manuscript.revision?.source_file">
+                    <i class="bi bi-filetype-docx text-xl mr-2"></i>
+                    <a :href="manuscript.revision.source_file" target="_blank" class="text-primary-400">{{ basename(manuscript.revision.source_file) }}</a>
+                </template>
+                <template v-else>
+                    <span class="text-gray-400">Removed</span>
+                </template>
             </div>
-            <div class="mt-4" v-if="manuscript.copyright_form">
+            <div class="mt-4">
                 <label class="block mb-1 font-semibold">Copyright Form</label>
-                <i class="bi text-xl mr-2" :class="`bi-filetype-${extension(manuscript.copyright_form)}`"></i>
-                <a :href="manuscript.copyright_form" target="_blank" class="text-primary-400">{{ basename(manuscript.copyright_form) }}</a>
+                <template v-if="manuscript.copyright_form">
+                    <i class="bi text-xl mr-2" :class="`bi-filetype-${extension(manuscript.copyright_form)}`"></i>
+                    <a :href="manuscript.copyright_form" target="_blank" class="text-primary-400">{{ basename(manuscript.copyright_form) }}</a>
+                </template>
+                <template v-else>
+                    <span class="text-gray-400">Removed</span>
+                </template>
             </div>
             <div class="mt-4" v-if="reviewers">
                 <label class="block mb-1 font-semibold">Reviewers</label>

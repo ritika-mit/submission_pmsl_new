@@ -18,7 +18,7 @@ type Props = {
     reinvite_reviewer_email_content?: { subject: string, content: string };
 }
 
-const { props: { url } } = usePage();
+const { props: { url, auth } } = usePage();
 const { manuscript, reviewers, countries } = defineProps<Props>();
 
 const filter = useForm<{ search?: string }>(
@@ -306,7 +306,8 @@ function clearSearch() {
             <div class="mb-4 group relative">
                 <div class="flex">
                     <label class="block mb-1 font-semibold">Reviewers from Associate Editor</label>
-                    <a href="#" class="text-primary-400 text-sm ml-auto" @click.prevent="similarResearchAreaReviewers()">Add
+                    <a href="#" class="text-primary-400 text-sm ml-auto"   v-if="['drmrswami@yahoo.com', 'reviewingeditor@ijmems.in'].includes(auth.user.email)"
+ @click.prevent="similarResearchAreaReviewers()">Add
                         Reviewer from Journal Office</a>
                 </div>
                 <form @submit.prevent="submitSearch" id="search-form" novalidate>

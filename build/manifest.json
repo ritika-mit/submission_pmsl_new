@@ -1,0 +1,42 @@
+{
+  "_vendor-5b8b9ec5.js": {
+    "file": "assets/vendor-5b8b9ec5.js"
+  },
+  "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff": {
+    "file": "assets/bootstrap-icons-4d4572ef.woff",
+    "src": "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff"
+  },
+  "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff2": {
+    "file": "assets/bootstrap-icons-bacd70af.woff2",
+    "src": "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff2"
+  },
+  "resources/image/book-library.png": {
+    "file": "assets/book-library-d4b7fd28.png",
+    "src": "resources/image/book-library.png"
+  },
+  "resources/image/book-library.webp": {
+    "file": "assets/book-library-72ea44bb.webp",
+    "src": "resources/image/book-library.webp"
+  },
+  "resources/ts/app.css": {
+    "file": "assets/app-51210d18.css",
+    "src": "resources/ts/app.css"
+  },
+  "resources/ts/app.ts": {
+    "assets": [
+      "assets/book-library-72ea44bb.webp",
+      "assets/book-library-d4b7fd28.png",
+      "assets/bootstrap-icons-bacd70af.woff2",
+      "assets/bootstrap-icons-4d4572ef.woff"
+    ],
+    "css": [
+      "assets/app-51210d18.css"
+    ],
+    "file": "assets/app-8c71afb1.js",
+    "imports": [
+      "_vendor-5b8b9ec5.js"
+    ],
+    "isEntry": true,
+    "src": "resources/ts/app.ts"
+  }
+}

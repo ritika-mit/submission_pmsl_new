@@ -204,30 +204,43 @@ function transformUpdateCommentReplyFormData(data: any) {
                 <template v-else>{{ row.title }}</template>
             </template>
             <template #other="{ row }">
-                <template v-if="row.revision?.similarity || row.revision?.pages || row.revision?.grammar_updated || row.revision?.source_file">
-                    <div class="whitespace-nowrap mb-1" v-if="row.revision?.similarity"><span class="font-semibold">Similarity</span>: {{ row.revision.similarity }}%</div>
-                    <div class="whitespace-nowrap mb-1" v-if="row.revision?.pages"><span class="font-semibold"># of Pages</span> : {{ row.revision.pages }}</div>
-                    <div class="whitespace-nowrap mb-1" v-if="row.revision?.grammar_updated"><i class="bi bi-clipboard-check"></i> <span class="font-semibold">Grammar Updated</span></div>
-                    <div class="whitespace-nowrap mb-1" v-if="row.revision?.source_file">
-                        <a :href="row.revision.source_file" target="_blank" class="text-primary-400 hover:underline"><i class="bi" :class="`bi-filetype-${extension(row.revision.source_file)}`"></i> Source File</a>
-                    </div>
-                    <div class="whitespace-nowrap mb-1" v-if="row.copyright_form">
-                        <a :href="row.copyright_form" target="_blank" class="text-primary-400 hover:underline"><i class="bi" :class="`bi-filetype-${extension(row.copyright_form)}`"></i> Copyright Form</a>
-                    </div>
-                    <div class="whitespace-nowrap mb-1" v-if="row.revision?.formatted_paper">
-                        <a :href="row.revision.formatted_paper" target="_blank" class="text-primary-400 hover:underline"><i class="bi" :class="`bi-filetype-${extension(row.revision.formatted_paper)}`"></i> Formatted Paper</a>
-                    </div>
-                    <div class="whitespace-nowrap mb-1" v-if="row.revision?.correction_file">
-                        <a :href="row.revision.correction_file" target="_blank" class="text-primary-400 hover:underline"><i class="bi" :class="`bi-filetype-${extension(row.revision.correction_file)}`"></i> Correction File</a>
-                    </div>
-                    <div class="whitespace-nowrap mb-1" v-if="row.revision?.other_file">
-                        <a :href="row.revision.other_file" target="_blank" class="text-primary-400 hover:underline"><i class="bi" :class="`bi-filetype-${extension(row.revision.other_file)}`"></i> Other File</a>
-                    </div>
-                    <div class="whitespace-nowrap mb-1" v-if="row.revision?.proofreader_paper">
-                        <a :href="row.revision.proofreader_paper" target="_blank" class="text-primary-400 hover:underline"><i class="bi" :class="`bi-filetype-${extension(row.revision.proofreader_paper)}`"></i> Proofreader Paper</a>
-                    </div>
-                </template>
-                <template v-else>-</template>
+                <div class="whitespace-nowrap mb-1" v-if="row.revision?.similarity"><span class="font-semibold">Similarity</span>: {{ row.revision.similarity }}%</div>
+                <div class="whitespace-nowrap mb-1" v-if="row.revision?.pages"><span class="font-semibold"># of Pages</span> : {{ row.revision.pages }}</div>
+                <div class="whitespace-nowrap mb-1" v-if="row.revision?.grammar_updated"><i class="bi bi-clipboard-check"></i> <span class="font-semibold">Grammar Updated</span></div>
+                <div class="whitespace-nowrap mb-1">
+                    <span class="font-semibold">Source File</span>:
+                    <template v-if="row.revision?.source_file">
+                        <a :href="row.revision.source_file" target="_blank" class="text-primary-400 hover:underline ml-1">
+                            <i class="bi" :class="`bi-filetype-${extension(row.revision.source_file)}`"></i> Download
+                        </a>
+                    </template>
+                    <template v-else>
+                        <span class="text-gray-400 ml-1">Removed</span>
+                    </template>
+                </div>
+                <div class="whitespace-nowrap mb-1">
+                    <span class="font-semibold">Copyright Form</span>:
+                    <template v-if="row.copyright_form">
+                        <a :href="row.copyright_form" target="_blank" class="text-primary-400 hover:underline ml-1">
+                            <i class="bi" :class="`bi-filetype-${extension(row.copyright_form)}`"></i> Download
+                        </a>
+                    </template>
+                    <template v-else>
+                        <span class="text-gray-400 ml-1">Removed</span>
+                    </template>
+                </div>
+                <div class="whitespace-nowrap mb-1" v-if="row.revision?.formatted_paper">
+                    <a :href="row.revision.formatted_paper" target="_blank" class="text-primary-400 hover:underline"><i class="bi" :class="`bi-filetype-${extension(row.revision.formatted_paper)}`"></i> Formatted Paper</a>
+                </div>
+                <div class="whitespace-nowrap mb-1" v-if="row.revision?.correction_file">
+                    <a :href="row.revision.correction_file" target="_blank" class="text-primary-400 hover:underline"><i class="bi" :class="`bi-filetype-${extension(row.revision.correction_file)}`"></i> Correction File</a>
+                </div>
+                <div class="whitespace-nowrap mb-1" v-if="row.revision?.other_file">
+                    <a :href="row.revision.other_file" target="_blank" class="text-primary-400 hover:underline"><i class="bi" :class="`bi-filetype-${extension(row.revision.other_file)}`"></i> Other File</a>
+                </div>
+                <div class="whitespace-nowrap mb-1" v-if="row.revision?.proofreader_paper">
+                    <a :href="row.revision.proofreader_paper" target="_blank" class="text-primary-400 hover:underline"><i class="bi" :class="`bi-filetype-${extension(row.revision.proofreader_paper)}`"></i> Proofreader Paper</a>
+                </div>
             </template>
             <template #events="{ row }">
                 <template v-if="row.events && row.events.length">

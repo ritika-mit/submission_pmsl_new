@@ -6,6 +6,7 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Log;
+use Carbon\Carbon;
 
 class DeleteOldManuscriptFiles_copyNew extends Command
 {
@@ -15,13 +16,19 @@ class DeleteOldManuscriptFiles_copyNew extends Command
     public function handle()
     {
         $dryRun = $this->option('dry-run');
+        $now = Carbon::now();
+        $logFileName = 'deleted_manuscript_files_' . $now->format('Y_m_d') . '.log';
+        $logPath = storage_path('logs/' . $logFileName);
 
         $this->info($dryRun ? '[Dry Run] Starting cleanup...' : 'Starting cleanup...');
+        if ($dryRun) {
+            $this->info("Log will not be saved in dry run.");
+        }
 
         // Step 1: Get manuscript IDs that have at least one old rejected/withdrawn/deleted revision
         $targetManuscriptIds = DB::table('revisions')
             ->whereIn('status', ['rejected', 'withdrawn', 'deleted'])
-            ->whereYear('updated_at', 2024)
+            ->where('updated_at', '<', Carbon::now()->subDays(30))
             ->pluck('manuscript_id')
             ->unique()
             ->toArray();
@@ -31,9 +38,13 @@ class DeleteOldManuscriptFiles_copyNew extends Command
             return;
         }
 
-        // Step 2: Get all old revisions for those manuscript IDs
+        // Step 2: Get all old revisions for those manuscript IDs (excluding ones already nullified)
         $revisions = DB::table('revisions')
             ->whereIn('manuscript_id', $targetManuscriptIds)
+            ->where(function ($query) {
+                $query->whereNotNull('source_file')
+                      ->orWhereNotNull('anonymous_file');
+            })
             ->get();
 
         foreach ($revisions as $revision) {
@@ -50,6 +61,13 @@ class DeleteOldManuscriptFiles_copyNew extends Command
                         try {
                             Storage::disk('local')->delete($path);
                             $this->info("Deleted: {$path}");
+
+                            // Log the deletion
+                            file_put_contents(
+                                $logPath,
+                                "Deleted {$field}: {$path} for Manuscript ID {$revision->manuscript_id}\n",
+                                FILE_APPEND
+                            );
                         } catch (\Exception $e) {
                             Log::error("Error deleting {$path}: " . $e->getMessage());
                         }
@@ -66,9 +84,10 @@ class DeleteOldManuscriptFiles_copyNew extends Command
             }
         }
 
-        // Step 3: Process manuscripts for copyright form
+        // Step 3: Process manuscripts (only if copyright_form is not already null)
         $manuscripts = DB::table('manuscripts')
             ->whereIn('id', $targetManuscriptIds)
+            ->whereNotNull('copyright_form')
             ->get();
 
         foreach ($manuscripts as $manuscript) {
@@ -81,6 +100,13 @@ class DeleteOldManuscriptFiles_copyNew extends Command
                     try {
                         Storage::disk('local')->delete($copyrightPath);
                         $this->info("Deleted: {$copyrightPath}");
+
+                        // Log the deletion
+                        file_put_contents(
+                            $logPath,
+                            "Deleted copyright_form: {$copyrightPath} for Manuscript ID {$manuscript->id}\n",
+                            FILE_APPEND
+                        );
                     } catch (\Exception $e) {
                         Log::error("Error deleting {$copyrightPath}: " . $e->getMessage());
                     }
