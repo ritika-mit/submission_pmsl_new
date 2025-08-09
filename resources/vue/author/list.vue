@@ -20,6 +20,8 @@ const filter = useForm(
 )
 
 function submit(_filter: Filter) {
+    if ('page' in _filter) filter.page = _filter.page;
+    if ('perPage' in _filter) filter.perPage = _filter.perPage;
     filter.transform(() => _filter).get(url.current, {
         preserveState: true,
         preserveScroll: true
@@ -32,7 +34,6 @@ function action($event: Event, row: Author) {
     target.value = '';
     
     const page = filter.page ?? 1; // get current page, adjust as needed
-
     switch (action) {
         case 'edit':
             return router.visit(`/authors/${row.id}?page=${page}`);

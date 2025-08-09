@@ -20,15 +20,19 @@ class HomeController extends Controller
     {
         $user = $request->user();
 
-        return Inertia::render('dashboard/index', [
-            'publishedManuscripts' => Manuscript::query()->status(Status::PUBLISHED)->count(),
-            'totalManuscripts' => Manuscript::count(),
-            'totalAuthor' => Author::query()->count(),
-            'manuscriptCountByStatus' => $this->manuscriptCountByStatus($user),
-            'authorsVsManuscripts' => $this->authorsVsManuscripts($user),
-            'authors' => in_array($user->section, [Section::AUTHOR, Section::REVIEWER]) ? null : Author::query()->with('country')->latest()->limit(5)->get(),
-            'manuscripts' => in_array($user->section, [Section::AUTHOR, Section::REVIEWER]) ? null :  Manuscript::query()->with('revision')->latest()->limit(5)->get(),
-        ]);
+        if (in_array($user->section, [Section::AUTHOR, Section::REVIEWER])) {
+            return Inertia::render('dashboard/welcome',['username' => $user->name]);
+        }else{
+            return Inertia::render('dashboard/index', [
+                'publishedManuscripts' => Manuscript::query()->status(Status::PUBLISHED)->count(),
+                'totalManuscripts' => Manuscript::count(),
+                'totalAuthor' => Author::query()->count(),
+                'manuscriptCountByStatus' => $this->manuscriptCountByStatus($user),
+                'authorsVsManuscripts' => $this->authorsVsManuscripts($user),
+                'authors' => in_array($user->section, [Section::AUTHOR, Section::REVIEWER]) ? null : Author::query()->with('country')->latest()->limit(5)->get(),
+                'manuscripts' => in_array($user->section, [Section::AUTHOR, Section::REVIEWER]) ? null :  Manuscript::query()->with('revision')->latest()->limit(5)->get(),
+            ]);
+        }
     }
 
     public function manuscriptCountByStatus($user)

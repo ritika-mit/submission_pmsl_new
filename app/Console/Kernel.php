@@ -14,7 +14,9 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('manuscript:invite-reviewer')->everyMinute()->appendOutputTo(storage_path('logs/invite-reminder.log-' . now()->format('Y-m-d') . '.log'));
         $schedule->command('manuscript:remind-reviewer')->everyMinute()->appendOutputTo(storage_path('logs/review-reminder-' . now()->format('Y-m-d') . '.log'));
+        $schedule->command('manuscripts:delete-old-files-copy-new')->daily()->withoutOverlapping();
         $schedule->command('email:test-scheduled')->everyMinute()->appendOutputTo(storage_path('logs/test-mails-' . now()->format('Y-m-d') . '.log'));
+
         //$schedule->command('email:test-scheduled')->everyMinute(); // or any time you want
 
     }

@@ -53,6 +53,7 @@ export type GuestAuthor = {
     updated_at: string;
     pending_review_count?: number;
     research_areas?: ResearchArea[];
+    section: Section;
 }
 
 export type Author = GuestAuthor & {
@@ -72,6 +73,7 @@ export type Author = GuestAuthor & {
     accept_review_request: boolean;
     roles?: Role[];
     permissions?: Permission[];
+    country_name?: Country;
 }
 
 export type Action = {
